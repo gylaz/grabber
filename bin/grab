@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require 'grabber'
+
+unless ARGV[0] && ARGV[1]
+  puts "Usage: grab web_site_address download_directory"
+  exit
+end
+
+unless Dir.exists?(ARGV[1])
+  puts "Directory doesn't exist: #{ARGV[1]}"
+  exit
+end
+
+Grabber::Site.new(ARGV[0], ARGV[1]).crawl
